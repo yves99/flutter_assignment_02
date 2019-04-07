@@ -2,33 +2,33 @@ import 'package:sqflite/sqflite.dart';
 
 final String tableTodo = "todo";
 final String columnId = "_id";
-final String columnTitle = "todoItem";
-final String columnDone = "isDone";
+final String columnTitle = "title";
+final String columnDone = "done";
 
 class Todo {
 
   int id;
-  String todoItem;
-  bool isDone;
+  String title;
+  bool done;
 
   Todo();
   Todo.formMap(Map<String, dynamic> map) {
     this.id = map[columnId];
-    this.todoItem = map[columnTitle];
-    this.isDone = map[columnDone] == 1;
+    this.title = map[columnTitle];
+    this.done = map[columnDone] == 1;
   }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
-      columnTitle: todoItem,
-      columnDone: isDone,
+      columnTitle: title,
+      columnDone: done,
     };
     if (id != null) { map[columnId] = id; }
     return map;
   }
 
   @override
-  String toString() { return '${this.id}, ${this.todoItem}, ${this.isDone}'; }
+  String toString() { return '${this.id}, ${this.title}, ${this.done}'; }
 
 }
 

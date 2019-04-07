@@ -48,14 +48,14 @@ class AddState extends State<Add>{
             
             Container(
               child: new RaisedButton(
-                child: Text("Save"), padding: const EdgeInsets.all(10.0),
+                child: Text("Save"),
                 onPressed: () async {
                   _formkey.currentState.validate();
                   if(myController.text.length > 0){
                     await todo.open("todo.db");
                     Todo data = Todo();
-                    data.todoItem = myController.text;
-                    data.isDone = false;
+                    data.title = myController.text;
+                    data.done = false;
                     await todo.insert(data);
                     print(data);
                     print('insert complete');
